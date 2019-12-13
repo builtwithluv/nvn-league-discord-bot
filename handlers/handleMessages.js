@@ -1,29 +1,23 @@
-const commands = require('../commands');
+export const PREFIX = '!';
 
-const PREFIX_EXECUTOR = '!';
+export default function handleMessages(bot, apollo) {
+    return message => {
+        if (!message.content.startsWith(PREFIX) || message.author.bot) {
+            return;
+        }
 
-module.exports = function handleMessages(bot) {
-    return (user, userID, channelID, message, evt) => {
-            if (!doesMatchPrefixExecutor(message)) {
-                return;
-            }
-        
-            const action = getAction(message);
-            const command = commands.find(command => command.name === action);
+        const args = message.content.substring(PREFIX.length).split(/ +/);
+        const command = args.shift().toLowerCase();
 
-            if (command) {
-                command.execute(bot, { user, userID, channelID });
-            }
+        if (!bot.commands.has(command)) {
+            return;
+        }
+
+        try {
+            bot.commands.get(command).execute(message, args, bot, apollo);
+        } catch (error) {
+            console.error(error);
+            message.reply('there was an error trying to execute that command!');
+        }
     }
-}
-
-
-function doesMatchPrefixExecutor(message) {
-    return message[0] === PREFIX_EXECUTOR;
-}
-
-function getAction(message) {
-    const args = message.substring(PREFIX_EXECUTOR.length).split(' ');
-    
-    return args[0];
 }

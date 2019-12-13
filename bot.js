@@ -1,8 +1,8 @@
-const Discord = require('discord.io');
-const logger = require('winston');
-const { DISCORD_TOKEN } = require('./config');
-
-const handleMessages = require('./handlers/handleMessages');
+import logger from 'winston';
+import apollo from './clients/apollo-client';
+import bot from './clients/discord-client';
+import handleMessages from './handlers/handleMessages';
+import config from './config';
 
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -10,15 +10,15 @@ logger.add(new logger.transports.Console, {
 });
 logger.level = 'debug';
 
-const bot = new Discord.Client({
-   token: DISCORD_TOKEN,
-   autorun: true
-});
+bot.login(config.DISCORD_TOKEN);
+
+bot.on('error', (err, code) => {
+    console.log(err);
+    console.log(code);
+})
 
 bot.on('ready', function (evt) {
     logger.info('Connected');
-    logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
-bot.on('message', handleMessages(bot));
+bot.on('message', handleMessages(bot, apollo));

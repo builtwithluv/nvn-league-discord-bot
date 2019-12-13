@@ -8,4 +8,4 @@ if (result.error) {
 
 const { parsed: env } = result;
 
-module.exports = env;
+export default env;

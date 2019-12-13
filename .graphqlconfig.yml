@@ -1,0 +1,18 @@
+projects:
+  nvn-league:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: us-west-2
+        apiId: f72lcz5snraabn6xzgdpba25pq
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

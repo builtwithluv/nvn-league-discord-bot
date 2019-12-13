@@ -1,0 +1,15 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-nvnleague-bot-prod-111408-authRole",
+            "UnauthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-111408-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-111408-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-nvnleague-bot-prod-111408-deployment",
+            "UnauthRoleName": "amplify-nvnleague-bot-prod-111408-unauthRole",
+            "StackName": "amplify-nvnleague-bot-prod-111408",
+            "StackId": "arn:aws:cloudformation:us-west-2:335491519505:stack/amplify-nvnleague-bot-prod-111408/bed67dc0-1ddc-11ea-bfde-0a14cc4f5b48",
+            "AmplifyAppId": "d1jlu2wrdugs4g"
+        }
+    }
+}
