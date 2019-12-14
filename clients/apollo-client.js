@@ -23,7 +23,7 @@ const client = new AWSAppSyncClient({
         type: AUTH_TYPE.API_KEY,
         apiKey: aws_exports.aws_appsync_apiKey
     },
-    disableOffline: true,
+    disableOffline: true
 });
 
 export default client;

@@ -4,9 +4,14 @@
 export const getChallenge = `query GetChallenge($id: ID!) {
   getChallenge(id: $id) {
     id
-    challenger
-    defender
-    challenger_score
+    challenger_id
+    defender_id
+    status
+    winner
+    loser
+    challenger_reported_score
+    defender_reported_score
+    score
   }
 }
 `;
@@ -18,9 +23,14 @@ export const listChallenges = `query ListChallenges(
   listChallenges(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      challenger
-      defender
-      challenger_score
+      challenger_id
+      defender_id
+      status
+      winner
+      loser
+      challenger_reported_score
+      defender_reported_score
+      score
     }
     nextToken
   }

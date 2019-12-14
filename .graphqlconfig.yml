@@ -1,5 +1,5 @@
 projects:
-  nvn-league:
+  NvN League:
     schemaPath: src/graphql/schema.json
     includes:
       - graphql/**/*.js
@@ -11,7 +11,7 @@ projects:
         generatedFileName: ''
         docsFilePath: src/graphql
         region: us-west-2
-        apiId: f72lcz5snraabn6xzgdpba25pq
+        apiId: lwuv4qj3fjejhc3qzc45e2dzma
         maxDepth: 2
 extensions:
   amplify:
