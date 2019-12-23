@@ -1,8 +1,14 @@
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 import gql from 'graphql-tag';
 import { listChallenges } from '../src/graphql/queries';
 import getUserFromMention from '../helpers/getUserFromMention';
 import createMention from '../helpers/createMentionFromUserId';
 import formatGraphQLError from '../helpers/formatGraphQLError';
+
+TimeAgo.addLocale(en);
+
+const timeAgo = new TimeAgo('en-US');
 
 export default {
     name: 'pending',
@@ -53,7 +59,9 @@ export default {
                     return message.channel.send('You don\'t have any pending challenge. Start one by using \`!challenge {mention}\!`');
                 }
 
-                return message.channel.send(`${user === message.author ? 'You have' : `${createMention(user.id)} has`} a pending challenge with ${user.id === challenge.challenger_id ? createMention(challenge.defender_id) : createMention(challenge.challenger_id)}`);
+                const ms = new Date(challenge.started_at).getTime();
+
+                return message.channel.send(`${user === message.author ? 'You have' : `${createMention(user.id)} has`} a pending challenge with ${user.id === challenge.challenger_id ? createMention(challenge.defender_id) : createMention(challenge.challenger_id)} that started ${timeAgo.format(ms)}.`);
             })
             .catch(err => {
                 message.channel.send(formatGraphQLError(err.message));
