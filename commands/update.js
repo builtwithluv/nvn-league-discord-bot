@@ -7,14 +7,21 @@ export default {
     name: 'update',
     description: 'Update a challenge score',
     execute(message, args, bot, apollo) {
+        const ownScore = args[0];
+        const opponentScore = args[1];
+
+        if (ownScore === undefined || opponentScore === undefined) {
+            return message.channel.send('Report the score as [yours] [opponents]. Ex: \`!update 5 0\`');
+        }
+
         apollo.mutate({
             mutation: gql(updateReportedScore),
             variables: {
                 input: {
                     reporter: message.author.id,
                     score: {
-                        own: args[0],
-                        opponent: args[1]
+                        own: ownScore,
+                        opponent: opponentScore
                     }
                 }
             }
