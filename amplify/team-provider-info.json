@@ -1,15 +1,15 @@
 {
     "prod": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-nvnleague-bot-prod-145134-authRole",
-            "UnauthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-145134-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-145134-authRole",
+            "AuthRoleName": "amplify-nvnleague-bot-prod-101016-authRole",
+            "UnauthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-101016-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-101016-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-nvnleague-bot-prod-145134-deployment",
-            "UnauthRoleName": "amplify-nvnleague-bot-prod-145134-unauthRole",
-            "StackName": "amplify-nvnleague-bot-prod-145134",
-            "StackId": "arn:aws:cloudformation:us-west-2:335491519505:stack/amplify-nvnleague-bot-prod-145134/1ed2cdf0-1dfb-11ea-babc-0aa772971980",
-            "AmplifyAppId": "d26jgs68cjdchm"
+            "DeploymentBucketName": "amplify-nvnleague-bot-prod-101016-deployment",
+            "UnauthRoleName": "amplify-nvnleague-bot-prod-101016-unauthRole",
+            "StackName": "amplify-nvnleague-bot-prod-101016",
+            "StackId": "arn:aws:cloudformation:us-west-2:335491519505:stack/amplify-nvnleague-bot-prod-101016/509aed30-24e6-11ea-b2d3-06c2ee48308c",
+            "AmplifyAppId": "dqu3tnpjmo24d"
         }
     }
 }

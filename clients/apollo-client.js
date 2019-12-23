@@ -5,7 +5,7 @@ require('isomorphic-fetch');
 import { AUTH_TYPE } from 'aws-appsync/lib/link/auth-link';
 import AWSAppSyncClient from 'aws-appsync';
 import AWS from 'aws-sdk';
-import aws_exports from '../aws-exports';
+import aws_exports from '../src/aws-exports';
 import config from '../config';
 
 AWS.config.update({

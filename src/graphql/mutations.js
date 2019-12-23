@@ -7,39 +7,42 @@ export const createChallenge = `mutation CreateChallenge($input: CreateChallenge
     challenger_id
     defender_id
     status
+    challenger_reported_score {
+      own
+      opponent
+    }
+    defender_reported_score {
+      own
+      opponent
+    }
     winner
     loser
-    challenger_reported_score
-    defender_reported_score
-    score
   }
 }
 `;
-export const updateChallenge = `mutation UpdateChallenge($input: UpdateChallengeInput!) {
-  updateChallenge(input: $input) {
+export const updateReportedScore = `mutation UpdateReportedScore($input: UpdateReportedScoreInput!) {
+  updateReportedScore(input: $input) {
     id
     challenger_id
     defender_id
     status
+    challenger_reported_score {
+      own
+      opponent
+    }
+    defender_reported_score {
+      own
+      opponent
+    }
     winner
     loser
-    challenger_reported_score
-    defender_reported_score
-    score
   }
 }
 `;
-export const deleteChallenge = `mutation DeleteChallenge($input: DeleteChallengeInput!) {
-  deleteChallenge(input: $input) {
+export const createLeaderboard = `mutation CreateLeaderboard {
+  createLeaderboard {
     id
-    challenger_id
-    defender_id
-    status
-    winner
-    loser
-    challenger_reported_score
-    defender_reported_score
-    score
+    ranks
   }
 }
 `;

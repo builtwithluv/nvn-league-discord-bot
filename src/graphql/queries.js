@@ -7,11 +7,16 @@ export const getChallenge = `query GetChallenge($id: ID!) {
     challenger_id
     defender_id
     status
+    challenger_reported_score {
+      own
+      opponent
+    }
+    defender_reported_score {
+      own
+      opponent
+    }
     winner
     loser
-    challenger_reported_score
-    defender_reported_score
-    score
   }
 }
 `;
@@ -28,11 +33,19 @@ export const listChallenges = `query ListChallenges(
       status
       winner
       loser
-      challenger_reported_score
-      defender_reported_score
-      score
     }
     nextToken
   }
+}
+`;
+export const getLeaderboard = `query GetLeaderboard {
+  getLeaderboard {
+    id
+    ranks
+  }
+}
+`;
+export const getRank = `query GetRank($player_id: String!) {
+  getRank(player_id: $player_id)
 }
 `;
