@@ -17,6 +17,9 @@ export const createChallenge = `mutation CreateChallenge($input: CreateChallenge
     }
     winner
     loser
+    started_at
+    completed_at
+    is_ego
   }
 }
 `;
@@ -36,6 +39,9 @@ export const updateReportedScore = `mutation UpdateReportedScore($input: UpdateR
     }
     winner
     loser
+    started_at
+    completed_at
+    is_ego
   }
 }
 `;

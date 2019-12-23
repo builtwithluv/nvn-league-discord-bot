@@ -17,6 +17,9 @@ export const getChallenge = `query GetChallenge($id: ID!) {
     }
     winner
     loser
+    started_at
+    completed_at
+    is_ego
   }
 }
 `;
@@ -33,6 +36,9 @@ export const listChallenges = `query ListChallenges(
       status
       winner
       loser
+      started_at
+      completed_at
+      is_ego
     }
     nextToken
   }
