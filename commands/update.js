@@ -43,10 +43,26 @@ export default {
                     }
                 }
 
-                return message.channel.send('GG');
+                const getFinalScoreText = score => `The final score was \`${score.own}-${score.opponent}\``;
+
+                if (challenge.winner === challenge.challenger_id && challenge.is_ego) {
+                    return message.channel.send(`${createMention(challenge.winner)}'s ego gain another boost after defeating ${createMention(challenge.loser)}. ${getFinalScoreText(challenge.challenger_reported_score)}.`);
+                }
+
+                if (challenge.loser === challenge.challenger_id && challenge.is_ego) {
+                    return message.channel.send(`${createMention(challenge.loser)}'s ego just dropped after losing to ${createMention(challenge.winner)} in an ego challenge. Hail to the new King of Necs! ${getFinalScoreText(challenge.challenger_reported_score)}.`);
+                }
+
+                if (challenge.winner === challenge.defender_id && challenge.defender_rank === 1) {
+                    return message.channel.send(`${createMention(challenge.loser)} lost his chance for the #1 spot while ${createMention(challenge.winner)} defended his title. ${getFinalScoreText(challenge.challenger_reported_score)}.`);
+                }
+
+                if (challenge.winner === challenge.challenger_id && challenge.defender_rank === 1) {
+                    return message.channel.send(`Hail to the new King of Necs - ${createMention(challenge.winner)}! The #${challenger_rank} spot now belongs to ${createMention(challenge.loser)}. ${getFinalScoreText(challenge.challenger_reported_score)}.`);
+                }
+
+                return message.channel.send(`GG. ${createMention(challenge.winner)} just defeated ${createMention(challenge.loser)}. ${challenge.winner === challenge.challenger_id ? getFinalScoreText(challenge.challenger_reported_score) : getFinalScoreText(challenge.defender_reported_score)}.`);
             })
-            .catch(err => {
-                message.channel.send(formatGraphQLError(err.message));
-            });
+            .catch(err => message.channel.send(formatGraphQLError(err.message)));
     }
 };
