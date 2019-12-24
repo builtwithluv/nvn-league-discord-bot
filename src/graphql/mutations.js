@@ -52,3 +52,10 @@ export const createLeaderboard = `mutation CreateLeaderboard {
   }
 }
 `;
+export const register = `mutation Register($player_id: String) {
+  register(player_id: $player_id) {
+    id
+    ranks
+  }
+}
+`;
