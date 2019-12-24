@@ -61,7 +61,7 @@ export default {
 
                 const ms = new Date(challenge.started_at).getTime();
 
-                return message.channel.send(`${user === message.author ? 'You have' : `${createMention(user.id)} has`} a pending challenge with ${user.id === challenge.challenger_id ? createMention(challenge.defender_id) : createMention(challenge.challenger_id)} that started ${timeAgo.format(ms)}.`);
+                return message.channel.send(`${user === message.author ? 'You have' : `${createMention(user.id)} has`} ${challenge.is_ego ? 'an ego' : 'a pending'} challenge with ${user.id === challenge.challenger_id ? createMention(challenge.defender_id) : createMention(challenge.challenger_id)} that started ${timeAgo.format(ms)}.`);
             })
             .catch(err => {
                 message.channel.send(formatGraphQLError(err.message));

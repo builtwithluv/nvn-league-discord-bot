@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
+import table from 'markdown-table';
 import { getRank, listChallenges } from '../src/graphql/queries';
 import getUserFromMention from '../helpers/getUserFromMention';
-import createMention from '../helpers/createMentionFromUserId';
 import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
@@ -54,8 +54,19 @@ export default {
                         const numOfChallenges = challenges.length;
                         const numOfVictories = challenges.filter(challenge => challenge.winner === user.id).length;
                         const numOfLosses = challenges.filter(challenge => challenge.loser === user.id).length;
+                        const numOfDefendingTitles = challenges.filter(challenge => challenge.is_ego && challenge.winner === user.id && challenge.challenger_id === user.id).length;
+
+                        const stats = table(
+                            [
+                                ['Player', 'Rank', 'Defending Titles', '# of Challenges', '# of Victories', '# of Losses'],
+                                [user.username, rank, numOfDefendingTitles, numOfChallenges, numOfVictories, numOfLosses]
+                            ],
+                            {
+                                align: ['c', 'c', 'c', 'c', 'c', 'c']
+                            }
+                        );
         
-                        message.channel.send(`${createMention(user.id)}: \`\`\`{ challenges: ${numOfChallenges}, victories: ${numOfVictories}, losses: ${numOfLosses}, rank: ${rank} }\`\`\``);
+                        message.channel.send(`\`\`\`${stats}\`\`\``);
                     })
             })
             .catch(err => {
