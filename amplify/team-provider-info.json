@@ -1,15 +1,15 @@
 {
     "prod": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-nvnleague-bot-prod-101016-authRole",
-            "UnauthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-101016-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleague-bot-prod-101016-authRole",
+            "AuthRoleName": "amplify-nvnleaguediscordbot-prod-151523-authRole",
+            "UnauthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleaguediscordbot-prod-151523-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::335491519505:role/amplify-nvnleaguediscordbot-prod-151523-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "amplify-nvnleague-bot-prod-101016-deployment",
-            "UnauthRoleName": "amplify-nvnleague-bot-prod-101016-unauthRole",
-            "StackName": "amplify-nvnleague-bot-prod-101016",
-            "StackId": "arn:aws:cloudformation:us-west-2:335491519505:stack/amplify-nvnleague-bot-prod-101016/509aed30-24e6-11ea-b2d3-06c2ee48308c",
-            "AmplifyAppId": "dqu3tnpjmo24d"
+            "DeploymentBucketName": "amplify-nvnleaguediscordbot-prod-151523-deployment",
+            "UnauthRoleName": "amplify-nvnleaguediscordbot-prod-151523-unauthRole",
+            "StackName": "amplify-nvnleaguediscordbot-prod-151523",
+            "StackId": "arn:aws:cloudformation:us-west-2:335491519505:stack/amplify-nvnleaguediscordbot-prod-151523/450bd6f0-26a3-11ea-9522-02b80ff4b548",
+            "AmplifyAppId": "d2pv18l35iiv67"
         }
     }
 }

@@ -36,6 +36,14 @@ export const listChallenges = `query ListChallenges(
       challenger_id
       defender_id
       status
+      challenger_reported_score {
+        own
+        opponent
+      }
+      defender_reported_score {
+        own
+        opponent
+      }
       winner
       loser
       started_at
