@@ -20,6 +20,8 @@ export const createChallenge = `mutation CreateChallenge($input: CreateChallenge
     started_at
     completed_at
     is_ego
+    challenger_rank
+    defender_rank
   }
 }
 `;
@@ -42,6 +44,8 @@ export const updateReportedScore = `mutation UpdateReportedScore($input: UpdateR
     started_at
     completed_at
     is_ego
+    challenger_rank
+    defender_rank
   }
 }
 `;
