@@ -11,7 +11,11 @@ const commandFiles = fs.readdirSync(path.resolve('commands')).filter(file => fil
 for (const file of commandFiles) {
 	const command = require(path.resolve('commands', file)).default;
 
-	bot.commands.set(command.name, command);
+	if (typeof command.name === 'string') {
+		bot.commands.set(command.name, command);
+	} else if (Array.isArray(command.name)) {
+		command.name.forEach(name => bot.commands.set(name, command));
+	}
 }
 
 export default bot;

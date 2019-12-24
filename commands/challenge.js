@@ -5,7 +5,7 @@ import createMention from '../helpers/createMentionFromUserId';
 import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
-    name: 'challenge',
+    name: ['challenge', 'c'],
     description: 'Challenge a friendly foe',
     execute(message, args, bot, apollo) {
         const challenger = message.author;

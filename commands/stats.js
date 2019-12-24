@@ -9,6 +9,7 @@ export default {
     description: 'Get stats about a user',
     execute(message, args, bot, apollo) {
         const mention = args[0];
+
         let user;
 
         if (!mention) {

@@ -11,7 +11,7 @@ TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
 export default {
-    name: 'pending',
+    name: ['pending', 'p'],
     description: 'Get user pending challenge',
     execute(message, args, bot, apollo) {
         const mention = args[0];
