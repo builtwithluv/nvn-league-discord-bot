@@ -58,7 +58,7 @@ export default {
                 }
 
                 if (challenge.winner === challenge.challenger_id && challenge.defender_rank === 1) {
-                    return message.channel.send(`Hail to the new King of Necs - ${createMention(challenge.winner)}! The #${challenger_rank} spot now belongs to ${createMention(challenge.loser)}. ${getFinalScoreText(challenge.challenger_reported_score)}.`);
+                    return message.channel.send(`${createMention(challenge.loser)} just got booted from his #1 spot by a rank ${challenge.challenger_rank}. Hail to the new King of Necs - ${createMention(challenge.winner)}!. ${getFinalScoreText(challenge.challenger_reported_score)}.`);
                 }
 
                 return message.channel.send(`GG. ${createMention(challenge.winner)} just defeated ${createMention(challenge.loser)}. ${challenge.winner === challenge.challenger_id ? getFinalScoreText(challenge.challenger_reported_score) : getFinalScoreText(challenge.defender_reported_score)}.`);
