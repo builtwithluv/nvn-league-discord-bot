@@ -1,8 +1,10 @@
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import gql from 'graphql-tag';
+import table from 'markdown-table';
 import { listChallenges } from '../src/graphql/queries';
 import getUserFromMention from '../helpers/getUserFromMention';
+import getUserFromId from '../helpers/getUserFromId';
 import createMention from '../helpers/createMentionFromUserId';
 import formatGraphQLError from '../helpers/formatGraphQLError';
 
@@ -14,7 +16,37 @@ export default {
     name: ['pending', 'p'],
     description: 'Get user pending challenge',
     execute(message, args, bot, apollo) {
+        if (args[0] === 'all') {
+            return apollo.query({
+                query: gql(listChallenges),
+                variables: {
+                    filter: {
+                        status: {
+                            eq: 'pending_scores'
+                        }
+                    }
+                },
+                fetchPolicy: 'no-cache'
+            })
+                .then(res => {
+                    const pendingChallenges = res.data.listChallenges.items;
+
+                    if (pendingChallenges.length === 0) {
+                        return message.channel.send('There are no pending challenges. Start one by sending the command `!c {mention}`.');
+                    }
+
+                    const pendingChallengesTable = table([
+                        ['Challenger', 'Defender'],
+                        ...pendingChallenges.map(pc => [getUserFromId(pc.challenger_id, bot).username, getUserFromId(pc.defender_id, bot).username])
+                    ]);
+
+                    return message.channel.send(`\`\`\`${pendingChallengesTable}\`\`\``);
+                })
+                .catch(err => message.channel.send(formatGraphQLError(err.message)));
+        }
+
         const mention = args[0];
+
         let user;
 
         if (!mention) {
