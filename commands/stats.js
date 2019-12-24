@@ -5,7 +5,7 @@ import getUserFromMention from '../helpers/getUserFromMention';
 import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
-    name: 'stats',
+    name: ['stats', 's'],
     description: 'Get stats about a user',
     execute(message, args, bot, apollo) {
         const mention = args[0];

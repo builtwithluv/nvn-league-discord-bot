@@ -4,7 +4,7 @@ import createMention from '../helpers/createMentionFromUserId';
 import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
-    name: 'update',
+    name: ['update', 'u'],
     description: 'Update a challenge score',
     execute(message, args, bot, apollo) {
         const ownScore = args[0];
