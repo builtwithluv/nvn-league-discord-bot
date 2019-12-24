@@ -46,8 +46,10 @@ export default {
                 }
             }
         })
-            .then(() => {
-                message.channel.send(`${createMention(challenger.id)} has challenged ${createMention(defender.id)} to a duel!`);
+            .then(res => {
+                const challenge = res.data.createChallenge;
+
+                message.channel.send(`${createMention(challenger.id)} has ${challenge.is_ego ? 'ego' : ''} challenged ${createMention(defender.id)} to a duel!`);
             })
             .catch(err => {
                 message.channel.send(formatGraphQLError(err.message));
