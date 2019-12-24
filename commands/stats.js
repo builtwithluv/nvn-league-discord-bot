@@ -71,17 +71,21 @@ export default {
                                 ['# of Ego Loss', numOfEgoLosses],
                                 ['Total # of Wins', numOfTotalWins],
                                 ['Total # of Loss', numOfTotalLosses],
-                                ['Win/Lose Ratio', numOfChallenges === 0 ? '0%' : `${Math.round((numOfTotalWins / numOfChallenges) * 100)}%`],
+                                ['Win/Lose Ratio', numOfChallenges === 0 ? 'N/A' : `${Math.round((numOfTotalWins / numOfChallenges) * 100)}%`],
                             ],
                             {
                                 align: ['l', 'c']
                             }
                         );
-        
-                        message.channel.send(`\`\`\`${stats}\`\`\``);
+
+                        return message.channel.send(`\`\`\`${stats}\`\`\``);
                     })
                     .catch(err => {
-                        message.channel.send(formatGraphQLError(err.message));
+                        if (user === message.author) {
+                            return message.channel.send('You are not registered for the league. You can register by sending the command `!register`.')
+                        }
+
+                        return message.channel.send(formatGraphQLError(err.message));
                     });
             })
             .catch(err => {
