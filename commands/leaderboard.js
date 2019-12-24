@@ -13,7 +13,7 @@ export default {
             fetchPolicy: 'no-cache'
         })
             .then(res => {
-                if (!res.data.getLeaderboard) {
+                if (!res.data.getLeaderboard || (res.data.getLeaderboard && !res.data.getLeaderboard.ranks)) {
                     return message.channel.send('There is no one on the leaderboards.');
                 }
 
