@@ -69,6 +69,9 @@ export default {
         
                         message.channel.send(`\`\`\`${stats}\`\`\``);
                     })
+                    .catch(err => {
+                        message.channel.send(formatGraphQLError(err.message));
+                    });
             })
             .catch(err => {
                 message.channel.send(formatGraphQLError(err.message));
