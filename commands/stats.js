@@ -52,18 +52,23 @@ export default {
                     .then(rankRes => {
                         const rank = rankRes.data.getRank;
                         const challenges = challengesRes.data.listChallenges.items;
-                        const numOfChallenges = challenges.length;
+                        const numOfChallenges = challenges.filter(challenge => challenge.status === 'completed').length;
                         const numOfVictories = challenges.filter(challenge => challenge.winner === user.id).length;
                         const numOfLosses = challenges.filter(challenge => challenge.loser === user.id).length;
                         const numOfDefendingTitles = challenges.filter(challenge => challenge.is_ego && challenge.winner === user.id && challenge.challenger_id === user.id).length;
 
                         const stats = table(
                             [
-                                ['Player', 'Rank', 'Defending Titles', '# of Challenges', '# of Victories', '# of Losses'],
-                                [user.username, rank, numOfDefendingTitles, numOfChallenges, numOfVictories, numOfLosses]
+                                ['Property', user.username],
+                                ['Rank', rank],
+                                ['Defending Titles', numOfDefendingTitles],
+                                ['# of Challenges', numOfChallenges],
+                                ['# of Victories', numOfVictories],
+                                ['Win/Lose Ratio', `${(numOfVictories / numOfChallenges) * 100}%`],
+                                ['# of Losses', numOfLosses]
                             ],
                             {
-                                align: ['c', 'c', 'c', 'c', 'c', 'c']
+                                align: ['l', 'c']
                             }
                         );
         
