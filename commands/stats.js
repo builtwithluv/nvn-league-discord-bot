@@ -53,19 +53,25 @@ export default {
                         const rank = rankRes.data.getRank;
                         const challenges = challengesRes.data.listChallenges.items;
                         const numOfChallenges = challenges.filter(challenge => challenge.status === 'completed').length;
-                        const numOfVictories = challenges.filter(challenge => challenge.winner === user.id).length;
-                        const numOfLosses = challenges.filter(challenge => challenge.loser === user.id).length;
-                        const numOfDefendingTitles = challenges.filter(challenge => challenge.is_ego && challenge.winner === user.id && challenge.challenger_id === user.id).length;
+                        const numOfEgoChallenges = challenges.filter(challenge => challenge.is_ego).length;
+                        const numOfEgoWins = challenges.filter(challenge => challenge.is_ego && challenge.winner === challenge.challenger_id).length;
+                        const numOfEgoLosses = challenges.filter(challenge => challenge.is_ego && challenge.loser === challenge.challenger_id).length;
+                        const numOfTotalWins = challenges.filter(challenge => challenge.winner === user.id).length;
+                        const numOfTotalLosses = challenges.filter(challenge => challenge.loser === user.id).length;
+                        const numOfDefendingTitles = challenges.filter(challenge => (challenge.winner === challenge.defender_id && challenge.defender_rank === 1) || (challenge.is_ego && challenge.winner === challenge.challenger_id)).length;
 
                         const stats = table(
                             [
                                 ['Property', user.username],
                                 ['Rank', rank],
-                                ['Defending Titles', numOfDefendingTitles],
                                 ['# of Challenges', numOfChallenges],
-                                ['# of Victories', numOfVictories],
-                                ['Win/Lose Ratio', `${(numOfVictories / numOfChallenges) * 100}%`],
-                                ['# of Losses', numOfLosses]
+                                ['# of Defending Titles', numOfDefendingTitles],
+                                ['# of Ego Challenges', numOfEgoChallenges],
+                                ['# of Ego Wins', numOfEgoWins],
+                                ['# of Ego Loss', numOfEgoLosses],
+                                ['Total # of Wins', numOfTotalWins],
+                                ['Total # of Loss', numOfTotalLosses],
+                                ['Win/Lose Ratio', numOfChallenges === 0 ? '0%' : `${Math.round((numOfTotalWins / numOfChallenges) * 100)}%`],
                             ],
                             {
                                 align: ['l', 'c']
@@ -75,6 +81,7 @@ export default {
                         message.channel.send(`\`\`\`${stats}\`\`\``);
                     })
                     .catch(err => {
+                        console.error(err)
                         message.channel.send(formatGraphQLError(err.message));
                     });
             })
