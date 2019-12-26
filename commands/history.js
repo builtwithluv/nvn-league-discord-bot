@@ -17,7 +17,7 @@ export default {
                         const isChallengerWinner = c.winner === c.challenger_id;
                         const challenger = getUserFromId(c.challenger_id, bot);
                         const defender = getUserFromId(c.defender_id, bot);
-                        const challengeReportedScore = c.challenger_reported_score;
+                        const challengeReportedScore = c.is_conceded ? { own: '-', opponent: '-' } : c.challenger_reported_score;
                         const row = [challenger.username, defender.username, `${challengeReportedScore.own}-${challengeReportedScore.opponent}`];
 
                         if (isChallengerWinner) {

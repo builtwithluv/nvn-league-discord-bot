@@ -22,6 +22,7 @@ export const getChallenge = `query GetChallenge($id: ID!) {
     is_ego
     challenger_rank
     defender_rank
+    is_conceded
   }
 }
 `;
@@ -51,6 +52,7 @@ export const listChallenges = `query ListChallenges(
       is_ego
       challenger_rank
       defender_rank
+      is_conceded
     }
     nextToken
   }
