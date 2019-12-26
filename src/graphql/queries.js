@@ -60,14 +60,14 @@ export const listChallenges = `query ListChallenges(
   }
 }
 `;
-export const getLeaderboard = `query GetLeaderboard($id: ID!) {
-  getLeaderboard(id: $id) {
+export const getLeaderboard = `query GetLeaderboard($leaderboard_id: ID!) {
+  getLeaderboard(leaderboard_id: $leaderboard_id) {
     id
     ranks
   }
 }
 `;
-export const getRank = `query GetRank($leaderboar_id: ID!, $player_id: String!) {
-  getRank(leaderboar_id: $leaderboar_id, player_id: $player_id)
+export const getRank = `query GetRank($leaderboard_id: ID!, $player_id: String!) {
+  getRank(leaderboard_id: $leaderboard_id, player_id: $player_id)
 }
 `;
