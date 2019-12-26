@@ -1,3 +1,5 @@
+import { LeaderboardId } from '../constants';
+
 import gql from 'graphql-tag';
 import { updateReportedScore } from '../src/graphql/mutations';
 import createMention from '../helpers/createMentionFromUserId';
@@ -17,6 +19,7 @@ export default {
         apollo.mutate({
             mutation: gql(updateReportedScore),
             variables: {
+                leaderboard_id: LeaderboardId,
                 input: {
                     reporter: message.author.id,
                     score: {

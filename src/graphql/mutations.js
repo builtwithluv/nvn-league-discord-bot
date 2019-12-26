@@ -1,8 +1,8 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createChallenge = `mutation CreateChallenge($input: CreateChallengeInput!) {
-  createChallenge(input: $input) {
+export const createChallenge = `mutation CreateChallenge($leaderboard_id: ID!, $input: CreateChallengeInput!) {
+  createChallenge(leaderboard_id: $leaderboard_id, input: $input) {
     id
     challenger_id
     defender_id
@@ -23,11 +23,15 @@ export const createChallenge = `mutation CreateChallenge($input: CreateChallenge
     challenger_rank
     defender_rank
     is_conceded
+    leaderboard_id
   }
 }
 `;
-export const updateReportedScore = `mutation UpdateReportedScore($input: UpdateReportedScoreInput!) {
-  updateReportedScore(input: $input) {
+export const updateReportedScore = `mutation UpdateReportedScore(
+  $leaderboard_id: ID!
+  $input: UpdateReportedScoreInput!
+) {
+  updateReportedScore(leaderboard_id: $leaderboard_id, input: $input) {
     id
     challenger_id
     defender_id
@@ -48,6 +52,7 @@ export const updateReportedScore = `mutation UpdateReportedScore($input: UpdateR
     challenger_rank
     defender_rank
     is_conceded
+    leaderboard_id
   }
 }
 `;
@@ -58,8 +63,8 @@ export const createLeaderboard = `mutation CreateLeaderboard {
   }
 }
 `;
-export const register = `mutation Register($player_id: String!) {
-  register(player_id: $player_id) {
+export const register = `mutation Register($leaderboard_id: ID!, $player_id: String!) {
+  register(leaderboard_id: $leaderboard_id, player_id: $player_id) {
     id
     ranks
   }
@@ -87,6 +92,7 @@ export const concede = `mutation Concede($leaderboard_id: ID!, $player_id: Strin
     challenger_rank
     defender_rank
     is_conceded
+    leaderboard_id
   }
 }
 `;

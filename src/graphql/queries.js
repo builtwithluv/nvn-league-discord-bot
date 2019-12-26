@@ -23,6 +23,7 @@ export const getChallenge = `query GetChallenge($id: ID!) {
     challenger_rank
     defender_rank
     is_conceded
+    leaderboard_id
   }
 }
 `;
@@ -53,19 +54,20 @@ export const listChallenges = `query ListChallenges(
       challenger_rank
       defender_rank
       is_conceded
+      leaderboard_id
     }
     nextToken
   }
 }
 `;
-export const getLeaderboard = `query GetLeaderboard {
-  getLeaderboard {
+export const getLeaderboard = `query GetLeaderboard($id: ID!) {
+  getLeaderboard(id: $id) {
     id
     ranks
   }
 }
 `;
-export const getRank = `query GetRank($player_id: String!) {
-  getRank(player_id: $player_id)
+export const getRank = `query GetRank($leaderboar_id: ID!, $player_id: String!) {
+  getRank(leaderboar_id: $leaderboar_id, player_id: $player_id)
 }
 `;

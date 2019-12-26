@@ -1,3 +1,5 @@
+import { LeaderboardId } from '../constants';
+
 import gql from 'graphql-tag';
 import { register } from '../src/graphql/mutations';
 import formatGraphQLError from '../helpers/formatGraphQLError';
@@ -9,6 +11,7 @@ export default {
         apollo.mutate({
             mutation: gql(register),
             variables: {
+                leaderboard_id: LeaderboardId,
                 player_id: message.author.id
             }
         })

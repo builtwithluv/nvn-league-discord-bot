@@ -1,3 +1,5 @@
+import { LeaderboardId } from '../constants';
+
 import gql from 'graphql-tag';
 import table from 'markdown-table';
 import { getLeaderboard } from '../src/graphql/queries';
@@ -10,6 +12,9 @@ export default {
     execute(message, args, bot, apollo) {
         apollo.query({
             query: gql(getLeaderboard),
+            variables: {
+                leaderboard_id: LeaderboardId
+            },
             fetchPolicy: 'no-cache'
         })
             .then(res => {
