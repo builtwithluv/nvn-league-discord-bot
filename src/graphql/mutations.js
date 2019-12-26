@@ -58,14 +58,14 @@ export const createLeaderboard = `mutation CreateLeaderboard {
   }
 }
 `;
-export const register = `mutation Register($player_id: String) {
+export const register = `mutation Register($player_id: String!) {
   register(player_id: $player_id) {
     id
     ranks
   }
 }
 `;
-export const concede = `mutation Concede($leaderboard_id: ID!, $player_id: String) {
+export const concede = `mutation Concede($leaderboard_id: ID!, $player_id: String!) {
   concede(leaderboard_id: $leaderboard_id, player_id: $player_id) {
     id
     challenger_id
@@ -87,6 +87,13 @@ export const concede = `mutation Concede($leaderboard_id: ID!, $player_id: Strin
     challenger_rank
     defender_rank
     is_conceded
+  }
+}
+`;
+export const drop = `mutation Drop($leaderboard_id: ID!, $player_id: String!) {
+  drop(leaderboard_id: $leaderboard_id, player_id: $player_id) {
+    id
+    ranks
   }
 }
 `;
