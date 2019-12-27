@@ -1,4 +1,4 @@
-import { ErrorCode, LeaderboardId } from '../constants';
+import { ErrorCode } from '../constants';
 
 import gql from 'graphql-tag';
 import { concede } from '../src/graphql/mutations';
@@ -16,7 +16,7 @@ export default {
             return apollo.mutate({
                 mutation: gql(concede),
                 variables: {
-                    leaderboard_id: LeaderboardId,
+                    leaderboard_id: message.guild.id,
                     player_id: message.author.id
                 }
             })

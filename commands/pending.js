@@ -23,6 +23,9 @@ export default {
                     filter: {
                         status: {
                             eq: 'pending_scores'
+                        },
+                        leaderboard_id: {
+                            eq: message.guild.id
                         }
                     }
                 },
@@ -78,6 +81,10 @@ export default {
                     }, {
                         status: {
                             eq: 'pending_scores'
+                        }
+                    }, {
+                        leaderboard_id: {
+                            eq: message.guild.id
                         }
                     }]
                 }

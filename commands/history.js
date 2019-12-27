@@ -42,6 +42,9 @@ export default {
                     filter: {
                         status: {
                             eq: 'completed'
+                        },
+                        leaderboard_id: {
+                            eq: message.guild.id
                         }
                     }
                 },
@@ -92,6 +95,10 @@ export default {
                     }, {
                         status: {
                             eq: 'completed'
+                        }
+                    }, {
+                        leaderboard_id: {
+                            eq: message.guild.id
                         }
                     }
                     ]

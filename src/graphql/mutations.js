@@ -1,7 +1,10 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createChallenge = `mutation CreateChallenge($leaderboard_id: ID!, $input: CreateChallengeInput!) {
+export const createChallenge = `mutation CreateChallenge(
+  $leaderboard_id: String!
+  $input: CreateChallengeInput!
+) {
   createChallenge(leaderboard_id: $leaderboard_id, input: $input) {
     id
     challenger_id
@@ -28,7 +31,7 @@ export const createChallenge = `mutation CreateChallenge($leaderboard_id: ID!, $
 }
 `;
 export const updateReportedScore = `mutation UpdateReportedScore(
-  $leaderboard_id: ID!
+  $leaderboard_id: String!
   $input: UpdateReportedScoreInput!
 ) {
   updateReportedScore(leaderboard_id: $leaderboard_id, input: $input) {
@@ -56,21 +59,21 @@ export const updateReportedScore = `mutation UpdateReportedScore(
   }
 }
 `;
-export const createLeaderboard = `mutation CreateLeaderboard {
-  createLeaderboard {
+export const createLeaderboard = `mutation CreateLeaderboard($leaderboard_id: String!) {
+  createLeaderboard(leaderboard_id: $leaderboard_id) {
     id
     ranks
   }
 }
 `;
-export const register = `mutation Register($leaderboard_id: ID!, $player_id: String!) {
+export const register = `mutation Register($leaderboard_id: String!, $player_id: String!) {
   register(leaderboard_id: $leaderboard_id, player_id: $player_id) {
     id
     ranks
   }
 }
 `;
-export const concede = `mutation Concede($leaderboard_id: ID!, $player_id: String!) {
+export const concede = `mutation Concede($leaderboard_id: String!, $player_id: String!) {
   concede(leaderboard_id: $leaderboard_id, player_id: $player_id) {
     id
     challenger_id
@@ -96,7 +99,7 @@ export const concede = `mutation Concede($leaderboard_id: ID!, $player_id: Strin
   }
 }
 `;
-export const drop = `mutation Drop($leaderboard_id: ID!, $player_id: String!) {
+export const drop = `mutation Drop($leaderboard_id: String!, $player_id: String!) {
   drop(leaderboard_id: $leaderboard_id, player_id: $player_id) {
     id
     ranks

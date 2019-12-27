@@ -1,5 +1,3 @@
-import { LeaderboardId } from '../constants';
-
 import gql from 'graphql-tag';
 import table from 'markdown-table';
 import { getRank, listChallenges } from '../src/graphql/queries';
@@ -30,15 +28,24 @@ export default {
             query: gql(listChallenges),
             variables: {
                 filter: {
-                    or: [{
-                        challenger_id: {
-                            eq: user.id
+                    and: [
+                        {
+                            or: [{
+                                challenger_id: {
+                                    eq: user.id
+                                }
+                            }, {
+                                defender_id: {
+                                    eq: user.id
+                                }
+                            }]
+                        },
+                        {
+                            leaderboard_id: {
+                                eq: message.guild.id
+                            }
                         }
-                    }, {
-                        defender_id: {
-                            eq: user.id
-                        }
-                    }]
+                    ]
                 }
             },
             fetchPolicy: 'no-cache'
@@ -47,7 +54,7 @@ export default {
                 apollo.query({
                     query: gql(getRank),
                     variables: {
-                        leaderboard_id: LeaderboardId,
+                        leaderboard_id: message.guild.id,
                         player_id: user.id
                     },
                     fetchPolicy: 'no-cache'

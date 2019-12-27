@@ -85,7 +85,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "SCALAR",
-                "name" : "ID",
+                "name" : "String",
                 "ofType" : null
               }
             },
@@ -109,7 +109,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "SCALAR",
-                "name" : "ID",
+                "name" : "String",
                 "ofType" : null
               }
             },
@@ -319,7 +319,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "SCALAR",
-              "name" : "ID",
+              "name" : "String",
               "ofType" : null
             }
           },
@@ -529,6 +529,15 @@
           "defaultValue" : null
         }, {
           "name" : "loser",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "TableStringFilterInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "leaderboard_id",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -956,7 +965,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "SCALAR",
-                "name" : "ID",
+                "name" : "String",
                 "ofType" : null
               }
             },
@@ -993,7 +1002,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "SCALAR",
-                "name" : "ID",
+                "name" : "String",
                 "ofType" : null
               }
             },
@@ -1022,7 +1031,20 @@
         }, {
           "name" : "createLeaderboard",
           "description" : null,
-          "args" : [ ],
+          "args" : [ {
+            "name" : "leaderboard_id",
+            "description" : null,
+            "type" : {
+              "kind" : "NON_NULL",
+              "name" : null,
+              "ofType" : {
+                "kind" : "SCALAR",
+                "name" : "String",
+                "ofType" : null
+              }
+            },
+            "defaultValue" : null
+          } ],
           "type" : {
             "kind" : "OBJECT",
             "name" : "Leaderboard",
@@ -1041,7 +1063,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "SCALAR",
-                "name" : "ID",
+                "name" : "String",
                 "ofType" : null
               }
             },
@@ -1078,7 +1100,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "SCALAR",
-                "name" : "ID",
+                "name" : "String",
                 "ofType" : null
               }
             },
@@ -1115,7 +1137,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "SCALAR",
-                "name" : "ID",
+                "name" : "String",
                 "ofType" : null
               }
             },
@@ -1249,33 +1271,6 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "TableBooleanFilterInput",
-        "description" : null,
-        "fields" : null,
-        "inputFields" : [ {
-          "name" : "ne",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "eq",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        } ],
-        "interfaces" : null,
-        "enumValues" : null,
-        "possibleTypes" : null
-      }, {
-        "kind" : "INPUT_OBJECT",
         "name" : "TableFloatFilterInput",
         "description" : null,
         "fields" : null,
@@ -1374,6 +1369,33 @@
         "description" : "Built-in Float",
         "fields" : null,
         "inputFields" : null,
+        "interfaces" : null,
+        "enumValues" : null,
+        "possibleTypes" : null
+      }, {
+        "kind" : "INPUT_OBJECT",
+        "name" : "TableBooleanFilterInput",
+        "description" : null,
+        "fields" : null,
+        "inputFields" : [ {
+          "name" : "ne",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "eq",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        } ],
         "interfaces" : null,
         "enumValues" : null,
         "possibleTypes" : null
@@ -2190,14 +2212,6 @@
         "onFragment" : false,
         "onField" : false
       }, {
-        "name" : "aws_api_key",
-        "description" : "Tells the service this field/object has access authorized by an API key.",
-        "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
-        "args" : [ ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
         "name" : "deprecated",
         "description" : null,
         "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
@@ -2211,6 +2225,14 @@
           },
           "defaultValue" : "\"No longer supported\""
         } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
+        "name" : "aws_api_key",
+        "description" : "Tells the service this field/object has access authorized by an API key.",
+        "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
+        "args" : [ ],
         "onOperation" : false,
         "onFragment" : false,
         "onField" : false

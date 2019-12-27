@@ -1,5 +1,3 @@
-import { LeaderboardId } from '../constants';
-
 import gql from 'graphql-tag';
 import { createChallenge } from '../src/graphql/mutations';
 import getUserFromMention from '../helpers/getUserFromMention';
@@ -42,7 +40,7 @@ export default {
         apollo.mutate({
             mutation: gql(createChallenge),
             variables: {
-                leaderboard_id: LeaderboardId,
+                leaderboard_id: message.guild.id,
                 input: {
                     challenger_id: challenger.id,
                     defender_id: defender.id,
