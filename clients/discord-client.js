@@ -1,12 +1,12 @@
-import fs from 'fs';
 import path from 'path';
 import Discord from 'discord.js';
+import getCommandFiles from '../helpers/getCommandFiles';
 
 const bot = new Discord.Client();
 
 bot.commands = new Discord.Collection();
 
-const commandFiles = fs.readdirSync(path.resolve('commands')).filter(file => file.endsWith('.js'));
+const commandFiles = getCommandFiles();
 
 for (const file of commandFiles) {
 	const command = require(path.resolve('commands', file)).default;

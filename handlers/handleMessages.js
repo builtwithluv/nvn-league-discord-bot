@@ -1,4 +1,4 @@
-export const PREFIX = '!';
+import { PREFIX } from '../constants';
 
 export default function handleMessages(bot, apollo) {
     return message => {

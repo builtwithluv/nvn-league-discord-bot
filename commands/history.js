@@ -7,7 +7,7 @@ import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
     name: ['history', 'h'],
-    description: 'Get game history',
+    description: 'Get completed challenge history',
     execute(message, args, bot, apollo) {
         const createHistoryTable = (challenges = []) => {
             return table(

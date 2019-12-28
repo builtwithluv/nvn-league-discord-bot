@@ -5,7 +5,7 @@ import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
     name: ['update', 'u'],
-    description: 'Update a challenge score',
+    description: 'Update score',
     execute(message, args, bot, apollo) {
         const ownScore = args[0];
         const opponentScore = args[1];

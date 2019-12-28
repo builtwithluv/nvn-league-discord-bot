@@ -6,7 +6,7 @@ import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
     name: ['stats', 's'],
-    description: 'Get stats about a user',
+    description: 'Get stats',
     execute(message, args, bot, apollo) {
         const mention = args[0];
 

@@ -1,36 +1,29 @@
-const helpMessage = `
-\`\`\`
-NvN Bot Commands
+import path from 'path';
+import { PREFIX } from '../constants';
+import getCommandFiles from '../helpers/getCommandFiles';
 
-[!register] to register for the league.
-[!challenge @user] to challenge someone.
-[!update {your score} {their score}] to report the score for the current challenge.
-[!stats @user] to get the stats for that user.
-[!pending @user] to see the pending challenge for that user.
-[!pending all] to see all pending challenges.
-[!rank @user] to see the rank of the user.
-[!leaderboard] to get the leaderboard.
-[!history @user] to see the user history.
-[!history all] to see the league history.
-[!concede] to concede from your challenge.
-[!drop] to drop from the league.
-[!help] to see available commands.
+const createHelpMessage = () => {
+    const commandFiles = getCommandFiles();
+    const title = `NvN Bot Commands (Use \`${PREFIX}\` to send commands)\n\n`;
+    const commands = [];
 
-Shortcuts:
-!challenge or !c
-!update or !u
-!stats or !s
-!pending or !p
-!leaderboard or !lb
-!history or !h
-!rank or !r
-\`\`\`
-`;
+    for (const file of commandFiles) {
+        const command = require(path.resolve('commands', file)).default;
+
+        if (typeof command.name === 'string') {
+            commands.push(`[${command.name}] ${command.description}\n`);
+        } else if (Array.isArray(command.name)) {
+            commands.push(`[${command.name.join(', ')}] ${command.description}\n`);
+        }
+    }
+
+    return `\`\`\`${title + commands.reduce((final, cmd) => final + cmd, '')}\`\`\``;
+}
 
 export default {
     name: 'help',
     description: 'Get available commands',
     execute(message, args, bot, apollo) {
-        return message.channel.send(helpMessage);
+        return message.channel.send(createHelpMessage());
     }
 };

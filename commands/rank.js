@@ -5,7 +5,7 @@ import formatGraphQLError from '../helpers/formatGraphQLError';
 
 export default {
     name: ['rank', 'r'],
-    description: 'Get the rank of a user',
+    description: 'Get ranking',
     execute(message, args, bot, apollo) {
         const mention = args[0];
 

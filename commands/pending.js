@@ -14,7 +14,7 @@ const timeAgo = new TimeAgo('en-US');
 
 export default {
     name: ['pending', 'p'],
-    description: 'Get user pending challenge',
+    description: 'Get pending challenge',
     execute(message, args, bot, apollo) {
         if (args[0] === 'all') {
             return apollo.query({
