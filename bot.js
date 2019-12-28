@@ -18,6 +18,7 @@ bot.on('error', (err, code) => {
 })
 
 bot.on('ready', function (evt) {
+    bot.user.setStatus('!help for available commands');
     logger.info('Connected');
 });
 
