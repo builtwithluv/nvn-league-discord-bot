@@ -18,7 +18,7 @@ bot.on('error', (err, code) => {
 })
 
 bot.on('ready', function (evt) {
-    bot.user.setPresence({ game: { name: '!help for cmds' } })
+    bot.user.setPresence({ game: { name: '| !help for cmds' } })
     logger.info('Connected');
 });
 
