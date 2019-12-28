@@ -7,8 +7,18 @@ export default {
     name: ['update', 'u'],
     description: 'Update score',
     execute(message, args, bot, apollo) {
-        const ownScore = args[0];
-        const opponentScore = args[1];
+        const score = args[0].split('-');
+
+        let ownScore;
+        let opponentScore;
+
+        if (score.length >= 2) {
+            ownScore = score[0];
+            opponentScore = score[1];
+        } else {
+            ownScore = args[0];
+            opponentScore = args[1];
+        }
 
         if (ownScore === undefined || opponentScore === undefined) {
             return message.channel.send('Report the score as [yours] [opponents]. Ex: \`!update 5 0\`');
