@@ -71,3 +71,12 @@ export const getRank = `query GetRank($leaderboard_id: String!, $player_id: Stri
   getRank(leaderboard_id: $leaderboard_id, player_id: $player_id)
 }
 `;
+export const getUser = `query GetUser($player_id: String!) {
+  getUser(player_id: $player_id) {
+    id
+    leaderboard_stats {
+      leaderboard_id
+    }
+  }
+}
+`;

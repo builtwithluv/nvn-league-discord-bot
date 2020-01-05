@@ -69,7 +69,9 @@ export const createLeaderboard = `mutation CreateLeaderboard($leaderboard_id: St
 export const register = `mutation Register($leaderboard_id: String!, $player_id: String!) {
   register(leaderboard_id: $leaderboard_id, player_id: $player_id) {
     id
-    ranks
+    leaderboard_stats {
+      leaderboard_id
+    }
   }
 }
 `;
