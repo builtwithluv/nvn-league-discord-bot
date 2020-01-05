@@ -63,12 +63,12 @@ export default {
                         const rank = rankRes.data.getRank;
                         const challenges = challengesRes.data.listChallenges.items;
                         const numOfChallenges = challenges.filter(challenge => challenge.status === 'completed').length;
-                        const numOfEgoChallenges = challenges.filter(challenge => challenge.is_ego).length;
-                        const numOfEgoWins = challenges.filter(challenge => challenge.is_ego && challenge.winner === challenge.challenger_id).length;
-                        const numOfEgoLosses = challenges.filter(challenge => challenge.is_ego && challenge.loser === challenge.challenger_id).length;
+                        const numOfEgoChallenges = challenges.filter(challenge => challenge.is_ego && challenge.status === 'completed').length;
+                        const numOfEgoWins = challenges.filter(challenge => challenge.is_ego && challenge.winner === user.id).length;
+                        const numOfEgoLosses = challenges.filter(challenge => challenge.is_ego && challenge.loser === user.id).length;
                         const numOfTotalWins = challenges.filter(challenge => challenge.winner === user.id).length;
                         const numOfTotalLosses = challenges.filter(challenge => challenge.loser === user.id).length;
-                        const numOfDefendingTitles = challenges.filter(challenge => (challenge.winner === challenge.defender_id && challenge.defender_rank === 1) || (challenge.is_ego && challenge.winner === challenge.challenger_id)).length;
+                        const numOfDefendingTitles = challenges.filter(challenge => (challenge.winner === user.id && challenge.defender_id === user.id && challenge.defender_rank === 1) || (challenge.is_ego && challenge.challenger_id === user.id && challenge.winner === user.id)).length;
 
                         const stats = table(
                             [
